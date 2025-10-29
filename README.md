@@ -14,14 +14,14 @@ Then run: python3 main.py
 
 
 Average runtime:
-| PROB_SIZE  | t |
+| PROB_SIZE  | t(s) |
 | ------------- | ------------- |
-| 10  | 2e-6s  |
-| 100  | 6e-6s  |
-| 1_000  | 50e-6s  |
-| 10_000  | 475e-6s  |
-| 100_000  | 5.5e-3s  |
-| 1_000_000  | 55e-3s  |
+| 10  | 2e-6  |
+| 100  | 6e-6  |
+| 1_000  | 50e-6  |
+| 10_000  | 475e-6  |
+| 100_000  | 5.5e-3  |
+| 1_000_000  | 55e-3  |
 
 
 Memory check for source file using Valgrind: \
