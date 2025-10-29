@@ -8,7 +8,15 @@ Any python intepreter \
 GCC compiler
 
 
-Memory check for source file using Valgrind:
+Steps: \
+Shared object file: gcc -shared -fPIC -o solver.so solver.c \
+Then run: python3 main.py
+
+
+$\micro$
+
+
+Memory check for source file using Valgrind: \
 gcc solver.c -g -o t \
 valgrind --leak-check=yes --track-origins=yes ./t \
 output: \
@@ -41,6 +49,4 @@ InMain Solution[11] 	: 0 \
 ==5475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
 
-Shared object file: gcc -shared -fPIC -o solver.so solver.c \
-Then run: python3 main.py
 
