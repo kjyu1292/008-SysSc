@@ -13,7 +13,9 @@ Shared object file: gcc -shared -fPIC -o solver.so solver.c \
 Then run: python3 main.py
 
 
-$\micro$
+Average runtime:
+PROB_SIZE    ||    t
+10           ||  2 $\micro$s
 
 
 Memory check for source file using Valgrind: \
