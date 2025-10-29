@@ -1,2 +1,2 @@
 # 008-SysSc
-Data pipeline imitating the decision making process of SC data
+Barebone implementation of dynamic lot-sizing algorithm Wagner-Whitin in C
