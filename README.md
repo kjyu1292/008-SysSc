@@ -16,10 +16,10 @@ Then run: python3 main.py
 Average runtime:
 | PROB_SIZE  | t |
 | ------------- | ------------- |
-| 10  | 2\micros  |
-| 100  | 6\micros  |
-| 1_000  | 50\micros  |
-| 10_000  | 475\micros  |
+| 10  | 2$\micro$s  |
+| 100  | 6$\micro$s  |
+| 1_000  | 50$\micro$s  |
+| 10_000  | 475$\micro$s  |
 | 100_000  | 5.5ms  |
 | 1_000_000  | 55ms  |
 
