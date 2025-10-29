@@ -6,5 +6,5 @@ Requirements:
 Any python intepreter
 GCC compiler
 
-Shared object file: gcc -shared -fPIC -o solver.so solver.c
+Shared object file: gcc -shared -fPIC -o solver.so solver.c \
 Then run: python3 main.py
