@@ -12,6 +12,7 @@ Memory check for source file using Valgrind:
 gcc solver.c -g -o t \
 valgrind --leak-check=yes --track-origins=yes ./t \
 output: \
+$
 ==5475== Memcheck, a memory error detector
 ==5475== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
 ==5475== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
@@ -39,6 +40,7 @@ InMain Solution[11] 	: 0
 ==5475== 
 ==5475== For lists of detected and suppressed errors, rerun with: -s
 ==5475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+$
 
 
 Shared object file: gcc -shared -fPIC -o solver.so solver.c \
