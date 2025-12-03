@@ -36,25 +36,33 @@ if __name__ == '__main__':
 	#print(f"Total cost: {total_cost}")
 	#print(f"Solution: {solution}")
 
-	NUM_EPS = 1_000
-	PROB_SIZE = 1_000
+	NUM_EPS = 28
+	BATCH_SIZE = 10_000
+	PROB_SIZE = 52
 	TOTAL_TIME = 0
+
 	for ep in range(1, NUM_EPS+1, 1):
+
 		demand = np.random.randint(
-				low = 0, high = 300
-				, size = (PROB_SIZE)
-				, dtype = np.int32
-				).tolist()
-		demand = (c_int32 * PROB_SIZE)(*demand)
-		num_elems = PROB_SIZE
-		ordering_cost = c_int32(300)
-		holding_cost = c_int32(2)
+			low = 0, high = 300
+			, size = (BATCH_SIZE, PROB_SIZE)
+			, dtype = np.int32
+		).tolist()
+
+		for i in demand:
+
+			d = (c_int32 * PROB_SIZE)(*i)
+			num_elems = PROB_SIZE
+			ordering_cost = c_int32(300)
+			holding_cost = c_int32(2)
+			
+			start = time.time()
+			result_ptr = lib.solve(d, num_elems, ordering_cost, holding_cost)
+			TOTAL_TIME += time.time() - start	
+			lib.free_mem(result_ptr)
 		
-		start = time.time()
-		result_ptr = lib.solve(demand, num_elems, ordering_cost, holding_cost)
-		TOTAL_TIME += time.time() - start	
-		lib.free_mem(result_ptr)
 		print(f"{ep} - {round(TOTAL_TIME, 9)}")
-	print(f"Total {NUM_EPS} eps - size {PROB_SIZE}: {round(TOTAL_TIME, 9)} s")
-	print(f"Per run of size {PROB_SIZE}: {round(TOTAL_TIME/NUM_EPS, 9)} s")
+
+	print(f"Total {NUM_EPS*BATCH_SIZE} problems - size {PROB_SIZE}: {round(TOTAL_TIME, 9)} s")
+	print(f"Per run of size {PROB_SIZE}: {round(TOTAL_TIME/(NUM_EPS*BATCH_SIZE), 9)} s")
 

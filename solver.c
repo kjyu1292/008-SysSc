@@ -22,10 +22,10 @@ void free_mem(custom_arr *s) {
 int32_t sum_between(int32_t* d, int32_t n, register int32_t i, register int32_t j) {
 	if (i > j) return 0;
 	int32_t sum_ = 0;
-	if (j >= n) {j = n;}
-	if (i >= 1) {i -= 1;} else {i = 0;}
+	if (j >= n) { j = n; }
+	if (i >= 1) { i -= 1; } else { i = 0; }
 	register int32_t t = i+1;
-	for (t = i+1; t <= j; t++) {sum_ += d[t];}
+	for (t = i+1; t <= j; t++) { sum_ += d[t]; }
 	return sum_;
 }
 
@@ -80,22 +80,19 @@ custom_arr* solve(int32_t* D, int32_t num_elems, int32_t o, int32_t h) {
 
 	while (1 == 1) {
 		int32_t j = cover_by[t];
-		for (int32_t k = j; k < t + 1; k++) {
-			res->arr[j] += D[k];
-		}
+		for (int32_t k = j; k < t + 1; k++) { res->arr[j] += D[k]; }
 		t = j - 1;
-		if (j == 0) {
-			break;
-		}
+		if (j == 0) { break; }
 	}
 
-	if (F != NULL) {free(F);}
-	if (cover_by != NULL) {free(cover_by);}
+	if (F != NULL) { free(F); }
+	if (cover_by != NULL) { free(cover_by); }
 
 	return res;
+
 }
 
-int32_t main() {
+int main() {
 
 	int32_t D[] = {10, 10, 15, 20, 70, 180, 250, 270, 230, 40, 0, 10};
 	int32_t num_elems = sizeof(D)/sizeof(D[0]);
@@ -111,7 +108,5 @@ int32_t main() {
 	free_mem(dummy);
 
 	return 0;
+
 }
-
-
-
