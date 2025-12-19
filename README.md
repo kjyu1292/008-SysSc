@@ -1,60 +1,30 @@
 # 008-SysSc
-Barebone implementation of dynamic lot-sizing algorithm Wagner-Whitin in C \
-Python version: https://gist.github.com/tommyod/7d3ee88b7c08fadab6de1ea1e615a925
-
+Python version: https://gist.github.com/tommyod/7d3ee88b7c08fadab6de1ea1e615a925 \
+v1.0: Barebone implementation of dynamic lot-sizing algorithm Wagner-Whitin in C \
+v2.0: Minimalize heap alloc in loops, extern an x86 assembly function that is called within a nested loop, still not remove function call but simplify it
 
 Requirements: \
 Any python intepreter \
-GCC compiler
+GCC compiler, or others as long as you edit script file \
+NASM compiler, or others as long as you edit script file
 
-
-Steps: \
-Shared object file: gcc -shared -fPIC -o solver.so solver.c \
-Then run: python3 main.py
-
+Run: \
+v1.0: .\script solver \
+v2.0: .\script_2 _sumBetween solver_2
 
 Average runtime:
-| PROB_SIZE  | t(s) |
-| ------------- | ------------- |
-| 10  | 2e-6  |
-| 100  | 6e-6  |
-| 1_000  | 50e-6  |
-| 10_000  | 475e-6  |
-| 100_000  | 5.5e-3  |
-| 1_000_000  | 55e-3  |
+| PROB_SIZE  | v1.0 | v2.0 |
+| ------------- | ------------- | ------------- |
+| 10  | 2e-6  | 1e-6  |
+| 100  | 6e-6  | 3e-6  |
+| 1_000  | 50e-6  | 24e-6  |
+| 10_000  | 475e-6  | 243e-6  |
+| 100_000  | 5.5e-3  | 2.5e-3  |
+| 1_000_000  | 55e-3  | stack overflow*  |
+
+* Can rework the allocation, keep it within 8MB, but it's not what I want to focus on this project
 
 
-Memory check for source file using Valgrind: \
-gcc solver.c -g -o t \
-valgrind --leak-check=yes --track-origins=yes ./t \
-output: \
-==5475== Memcheck, a memory error detector \
-==5475== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al. \
-==5475== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info \
-==5475== Command: ./t \
-==5475== \
-InMain Total cost: 2140 \
-InMain Solution[0] 	: 55 \
-InMain Solution[1] 	: 0 \
-InMain Solution[2] 	: 0 \
-InMain Solution[3] 	: 0 \
-InMain Solution[4] 	: 70 \
-InMain Solution[5] 	: 180 \
-InMain Solution[6] 	: 250 \
-InMain Solution[7] 	: 270 \
-InMain Solution[8] 	: 280 \
-InMain Solution[9] 	: 0 \
-InMain Solution[10] 	: 0 \
-InMain Solution[11] 	: 0 \
-==5475== \
-==5475== HEAP SUMMARY: \
-==5475==     in use at exit: 0 bytes in 0 blocks \
-==5475==   total heap usage: 16 allocs, 16 frees, 1,304 bytes allocated \
-==5475== \
-==5475== All heap blocks were freed -- no leaks are possible \
-==5475== \
-==5475== For lists of detected and suppressed errors, rerun with: -s \
-==5475== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
 
 
