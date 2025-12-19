@@ -1,7 +1,7 @@
 # 008-SysSc
 Python version: https://gist.github.com/tommyod/7d3ee88b7c08fadab6de1ea1e615a925 \
 v1.0: Barebone implementation of dynamic lot-sizing algorithm Wagner-Whitin with source code in low- and high-level languages, interfacing using surface-level language Python \
-v2.0: Reduce heap alloc in loops, extern an x86 assembly function that is called within a nested loop, still not remove function call but simplify it
+v2.0: Reduce heap alloc in loops, extern an x86 assembly function that is called within a nested loop, still not remove function-call but simplify it
 
 Requirements: \
 Any python intepreter \
