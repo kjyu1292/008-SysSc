@@ -12,9 +12,8 @@ fi
 
 nasm -g -f elf64 $1.s -o $1.o
 gcc -g -c -o $2.o $2.c
-#gcc -g -o $2 $2.o $1.o
 gcc -shared -o $2.so $1.o $2.o
-gcc -Wall -fsanitize=address,leak -fno-omit-frame-pointer -g -o $2 $2.o $1.o
+gcc -Wall -g -o $2 $2.o $1.o
 valgrind --leak-check=yes --track-origins=yes ./$2
 rm *.o
 rm $2
