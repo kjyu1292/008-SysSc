@@ -1,0 +1,21 @@
+if [ ! -e "$1.s" ]; then
+        echo "Error, $1.s not found."
+        echo "Note, do not enter file extensions."
+        exit
+fi
+
+if [ ! -e "$2.c" ]; then
+        echo "Error, $2.c not found."
+        echo "Note, do not enter file extensions."
+        exit
+fi
+
+nasm -g -f elf64 $1.s -o $1.o
+gcc -g -c -o $2.o $2.c
+#gcc -g -o $2 $2.o $1.o
+gcc -shared -o $2.so $1.o $2.o
+gcc -Wall -fsanitize=address,leak -fno-omit-frame-pointer -g -o $2 $2.o $1.o
+valgrind --leak-check=yes --track-origins=yes ./$2
+rm *.o
+rm $2
+
