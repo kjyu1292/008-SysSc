@@ -22,7 +22,7 @@ Average runtime:
 | 100_000  | 5.5e-3  | 2.5e-3  |
 | 1_000_000  | 55e-3  | stack overflow*  |
 
-* Can rework the allocation, keep it within 8MB, but it's not what I want to focus on this project
+&#42; Can rework the allocation, keep it within 8MB, but it's not what I want to focus on this project
 
 
 
