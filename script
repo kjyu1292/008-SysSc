@@ -5,7 +5,7 @@ if [ ! -e "$1.c" ]; then
 fi
 
 gcc -fPIC -shared -o $1.so $1.c
-gcc -Wall -g -o $1 $1.c
-valgrind --leak-check=yes --track-origins=yes ./$1
+gcc -Wall -Wextra -g -o $1 $1.c
+valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./$1
 rm $1
 
