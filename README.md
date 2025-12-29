@@ -8,7 +8,7 @@ Requirements: \
 Any python intepreter \
 GCC compiler, or others as long as you edit script file \
 NASM compiler, or others as long as you edit script file \
-Valgrind for memmory checking
+Valgrind for memory checking
 
 Run: \
 All version, to grant access: chmod +x script_{} \
