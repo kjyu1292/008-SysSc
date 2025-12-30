@@ -296,26 +296,30 @@ _sumBetween:
 	cmp		edx, ecx
 	jg		_endSum
 
-	cmp		ecx, esi
-	jl		_sumBetween1
+        mov             eax, 0
+        cmp             edx, ecx 
+        jg              _endSum
 
-	mov		ecx, esi
+        mov             r9d, ecx                ; j = n + ((j-n)&((j-n)>>31))
+        sub             r9d, esi 
+        mov             ecx, r9d 
+        sar             r9d, 31
+        and             ecx, r9d 
+        add             ecx, esi 
 
-_sumBetween1:
-	cmp		edx, 1
-	jl		_sumBetween2
-
-	dec		edx
-	jmp		_sumBetween3
-
-_sumBetween2:
-	mov		edx, 0
-
-_sumBetween3:
+        mov             r9d, edx                ; i = ((i-1)+((i-1)>>31))&~((i-1)>>31)
+        dec             r9d
+        mov             edx, r9d 
+        sar             r9d, 31
+        add             r9d, edx 
+        sar             edx, 31
+        not             edx
+        and             edx, r9d 
+	
 	mov		r9d, edx
 	inc		r9d
 
-_sumBetween4:
+_loop:
 	cmp		r9d, ecx
 	jg		_endSum
 
@@ -323,7 +327,7 @@ _sumBetween4:
 	add		eax, dword [rdi+r9]
 	sar		r9d, 2
 	inc		r9d
-	jmp		_sumBetween4
+	jmp		_loop
 
 _endSum:
 	mov		rsp, rbp
