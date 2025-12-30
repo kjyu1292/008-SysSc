@@ -22,8 +22,10 @@ void free_mem(custom_arr *s) {
 int32_t sum_between(int32_t* d, int32_t n, register int32_t i, register int32_t j) {
 	if (i > j) return 0;
 	int32_t sum_ = 0;
-	if (j >= n) { j = n; }
-	if (i >= 1) { i -= 1; } else { i = 0; }
+	//if (j >= n) { j = n; } else { j = j; }
+	j = n + ( (j-n) & ((j-n) >> 31) );
+	//if (i >= 1) { i -= 1; } else { i = 0; }
+	i = ( (i-1) + ((i-1) >> 31) ) & ~((i-1) >> 31);
 	register int32_t t = i+1;
 	for (t = i+1; t <= j; t++) { sum_ += d[t]; }
 	return sum_;
