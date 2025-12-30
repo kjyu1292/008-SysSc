@@ -15,9 +15,9 @@ Valgrind for memory checking
 
 Run: \
 All version, to grant access: chmod +x script_{} \
-v1.0: .\script solver \
-v2.0: .\script_2 _sumBetween solver_2 \
-v3.0: .\script_3 _solve solver_3
+v1.x: .\script solver \
+v2.x: .\script_2 _sumBetween solver_2 \
+v3.x: .\script_3 _solve solver_3
 
 Average runtime:
 | PROB_SIZE  | v1.0 | v1.1 | v2.0 | v2.1 | v3.0 | v3.1 |
