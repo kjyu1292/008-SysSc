@@ -296,10 +296,6 @@ _sumBetween:
 	cmp		edx, ecx
 	jg		_endSum
 
-        mov             eax, 0
-        cmp             edx, ecx 
-        jg              _endSum
-
         mov             r9d, ecx                ; j = n + ((j-n)&((j-n)>>31))
         sub             r9d, esi 
         mov             ecx, r9d 
