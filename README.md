@@ -8,6 +8,7 @@ v3.0: Implement the whole logic in assembly and wrap it in C \
 v3.1: Implement branchless practice in v3.0
 
 Requirements: \
+Linux OS \
 Any python intepreter \
 GCC compiler, or others as long as you edit script file \
 NASM compiler, or others as long as you edit script file \
