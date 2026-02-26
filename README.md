@@ -11,7 +11,7 @@ Requirements: \
 Linux OS \
 Any python intepreter \
 GCC compiler, or others as long as you edit script file \
-NASM compiler, or others as long as you edit script file \
+NASM assembler, or others as long as you edit script file \
 Valgrind for memory checking
 
 Run: \
